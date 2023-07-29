@@ -1,8 +1,6 @@
 package recursion;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Permutation {
     static void perm(String un, String p) {
@@ -41,11 +39,12 @@ public class Permutation {
     }
 
 
-    static List<String> combinationOfPhone(String un, String p, String ph) {
+    static List<String> combinationOfPhone(String un, String p) {
         List<String> outer = new LinkedList<>();
 
+
         if (un.length() == 0) {
-            outer.add(ph);
+            outer.add(p);
             return outer;
         }
 
@@ -57,25 +56,19 @@ public class Permutation {
             start = start + 1;
         }
 
-        for (int i = 0; i <= p.length(); i++) {
 
-
-            String temp = p.substring(0, i) + ch + p.substring(i);
-            for (int j = 0; j < n; j++) {
-
-                char c = (char) (start + j);
-                outer.addAll(combinationOfPhone(un.substring(1), temp, ph + c));
-            }
-
-
+        for (int j = 0; j < n; j++) {
+            char c = (char) (start + j);
+            outer.addAll(combinationOfPhone(un.substring(1), p + c));
         }
+
 
         return outer;
     }
 
     public static void main(String[] args) {
 //        perm("abc", "");
-        List<String> strings = combinationOfPhone("23", "", "");
+        List<String> strings = combinationOfPhone("79", "");
         System.out.println(strings);
     }
 }
