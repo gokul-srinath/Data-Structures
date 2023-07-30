@@ -81,7 +81,7 @@ public class LinkedList {
             return node;
         }
 
-        if(temp==null) {
+        if (temp == null) {
             Node node = new Node(val);
             return node;
         }
@@ -89,6 +89,104 @@ public class LinkedList {
         Node nextNode = irhelper(val, inx - 1, temp.next);
         temp.next = nextNode;
         return temp;
+    }
+
+
+    void removeDuplicates() {
+
+        rdHelper(this.head);
+    }
+
+    Node rdHelper(Node temp) {
+        if (temp == null) {
+            return null;
+        }
+
+        Node nextNode = rdHelper(temp.next);
+        if (nextNode != null && temp.val == nextNode.val) {
+            return nextNode;
+        }
+        temp.next = nextNode;
+        return temp;
+    }
+
+    boolean hasCycle(Node head) {
+
+        Node slow = head;
+        Node fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                return true;
+            }
+        }
+        return false;
+
+
+    }
+
+
+    boolean isHappy(int n) {
+        int slow = n;
+        int fast = n;
+
+        do {
+
+            slow = findSquares(n);
+            fast = findSquares(findSquares(n));
+
+        } while (slow != fast);
+
+        if (slow == 1) {
+            return true;
+        }
+
+
+        return false;
+
+    }
+
+
+    int findSquares(int n) {
+        int res = 0;
+        while (n > 0) {
+            int r = n % 10;
+            res += r * r;
+            n /= 10;
+        }
+        return res;
+    }
+
+
+    Node middleNode() {
+        Node slow = this.head;
+        Node fast = this.head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        return slow;
+    }
+
+    void reverseList() {
+
+        revHelper(head);
+    }
+
+    private Node revHelper(Node head) {
+        if (head == null || head.next == null) {
+            this.head = head;
+            return head;
+        }
+
+        Node returnNode = revHelper(head.next);
+        returnNode.next = head;
+        head.next = null;
+        return head;
     }
 
 
