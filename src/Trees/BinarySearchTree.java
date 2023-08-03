@@ -21,7 +21,7 @@ public class BinarySearchTree {
         }
 
         void setHeight(int h) {
-            this.height += h;
+            this.height = h;
         }
     }
 
@@ -98,7 +98,56 @@ public class BinarySearchTree {
             return true;
         }
 
-        return Math.abs(getHeight(node.left) - getHeight(node.right)) <= 1 && checkBalanced(node.left) && checkBalanced(node.right);
+        return getHeight(node.left) - getHeight(node.right) <= 1 && checkBalanced(node.left) && checkBalanced(node.right);
+    }
+
+
+    void preOrderTraversal() {
+        System.out.println("Preorder Traversal:");
+        preorder(this.root);
+        System.out.println();
+    }
+
+    private void preorder(Node node) {
+        if (node == null) {
+            return;
+        }
+        System.out.print(node.getValue() + " ");
+        preorder(node.left);
+        preorder(node.right);
+    }
+
+    void inOrderTraversal() {
+        System.out.println("Inorder Traversal:");
+        inorder(this.root);
+        System.out.println();
+    }
+
+    private void inorder(Node node) {
+        if (node == null) {
+            return;
+        }
+
+        inorder(node.left);
+        System.out.print(node.getValue() + " ");
+        inorder(node.right);
+    }
+
+    void postOrderTraversal() {
+        System.out.println("postOrder Traversal:");
+        postOrder(this.root);
+        System.out.println();
+    }
+
+    private void postOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+
+        postOrder(node.left);
+        postOrder(node.right);
+        System.out.print(node.getValue() + " ");
+
     }
 
 
