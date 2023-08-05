@@ -31,20 +31,22 @@ public class Main {
 //        bst.inOrderTraversal();
 //        bst.postOrderTraversal();
 
-        AVL avl = new AVL();
-
-        avl.insert(15);
-        avl.insert(6);
-        avl.insert(7);
-        avl.insert(4);
-        avl.insert(3);
-        avl.insert(2);
-
-
-        avl.display();
-
-        System.out.println("height:" + avl.getHeight());
-
+//        AVL avl = new AVL();
+//
+//        avl.insert(15);
+//        avl.insert(6);
+//        avl.insert(7);
+//        avl.insert(4);
+//        avl.insert(3);
+//        avl.insert(2);
+//
+//
+//        avl.display();
+//
+//        System.out.println("height:" + avl.getHeight());
+        int[] arr = {1, 5, 6, 7, 2, 4, 3, 11};
+        SegmentTree st = new SegmentTree(arr);
+        st.display();
 
     }
 }
