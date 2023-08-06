@@ -72,8 +72,45 @@ public class SegmentTree {
         System.out.println(node.start + "-" + node.end);
 
 
-
         display(node.left, level + 1);
+    }
+
+
+    int query(int start, int end) {
+        if (this.root == null) {
+            return 0;
+        }
+        if (end < this.root.start) {
+            return 0;
+        }
+        if (start > this.root.end) {
+            return 0;
+        }
+
+        return query(this.root, start, end);
+    }
+
+    int query(Node node, int start, int end) {
+        int sum=0;
+
+        if(start > node.end) {
+            return 0;
+        }
+        if(end < node.start) {
+            return 0;
+        }
+
+        if(node.start >= start && node.end <= end) {
+            return node.data;
+        }
+
+//        if((start == node.start || end == node.start) && node.start == node.end) {
+//            return node.data;
+//        }
+
+
+        sum+=query(node.left,start,end) + query(node.right,start,end);
+        return sum;
     }
 
 }

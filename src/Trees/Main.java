@@ -48,5 +48,12 @@ public class Main {
         SegmentTree st = new SegmentTree(arr);
         st.display();
 
+        System.out.println(st.query(0,1));
+        System.out.println(st.query(2,3));
+        System.out.println(st.query(3,3));
+        System.out.println(st.query(0, 3));
+        System.out.println(st.query(0, 7));
+
+
     }
 }
