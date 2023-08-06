@@ -91,16 +91,16 @@ public class SegmentTree {
     }
 
     int query(Node node, int start, int end) {
-        int sum=0;
+        int sum = 0;
 
-        if(start > node.end) {
+        if (start > node.end) {
             return 0;
         }
-        if(end < node.start) {
+        if (end < node.start) {
             return 0;
         }
 
-        if(node.start >= start && node.end <= end) {
+        if (node.start >= start && node.end <= end) {
             return node.data;
         }
 
@@ -109,8 +109,34 @@ public class SegmentTree {
 //        }
 
 
-        sum+=query(node.left,start,end) + query(node.right,start,end);
+        sum += query(node.left, start, end) + query(node.right, start, end);
         return sum;
+    }
+
+
+    void update(int inx, int val) {
+        update(this.root, inx, val);
+
+    }
+
+    Node update(Node node,int inx,int val) {
+
+        if(node.start == node.end && inx == node.start) {
+            node.data = val;
+            return node;
+        }
+        if (inx > node.end || inx < node.start) {
+            return node;
+        }
+
+
+
+        if(inx >= node.start && inx <= node.end) {
+            Node left = update(node.left,inx,val);
+            Node right = update(node.right,inx,val);
+            node.data = left.data + right.data;
+        }
+        return node;
     }
 
 }

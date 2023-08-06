@@ -1,5 +1,7 @@
 package Trees;
 
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -44,16 +46,41 @@ public class Main {
 //        avl.display();
 //
 //        System.out.println("height:" + avl.getHeight());
-        int[] arr = {1, 5, 6, 7, 2, 4, 3, 11};
-        SegmentTree st = new SegmentTree(arr);
-        st.display();
+//        int[] arr = {1, 5, 6, 7, 2, 4, 3, 11};
+//        SegmentTree st = new SegmentTree(arr);
+//        st.display();
+//
+//        System.out.println(st.query(0,1));
+//        System.out.println(st.query(2,3));
+//        System.out.println(st.query(3,3));
+//        System.out.println(st.query(0, 3));
+//        System.out.println(st.query(0, 7));
+//
+//        st.update(7,2);
+//        st.display();
 
-        System.out.println(st.query(0,1));
-        System.out.println(st.query(2,3));
-        System.out.println(st.query(3,3));
-        System.out.println(st.query(0, 3));
-        System.out.println(st.query(0, 7));
+        MaxHeap mh = new MaxHeap();
+        mh.insert(5);
+        mh.insert(4);
+        mh.insert(2);
+        mh.insert(5);
+        mh.insert(7);
 
+        mh.displayTree();
+        mh.insert(16);
+        mh.displayTree();
 
+        int[] sorted = mh.heapSort();
+        System.out.println(Arrays.toString(sorted));
+
+        System.out.println("Deleted ->" + mh.delete());
+        System.out.println("----------------------------------");
+        mh.displayTree();
+        System.out.println("Deleted ->" + mh.delete());
+        System.out.println("----------------------------------");
+        mh.displayTree();
+
+        sorted = mh.heapSort();
+        System.out.println(Arrays.toString(sorted));
     }
 }
