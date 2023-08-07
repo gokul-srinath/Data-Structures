@@ -4,15 +4,16 @@ import java.util.Arrays;
 
 public class MaxHeap {
 
-    int[] arr = {};
+    int[] arr;
 
     public MaxHeap(int[] arr) {
         this.arr = arr;
     }
 
     public MaxHeap() {
-
+        arr = new int[]{};
     }
+
 
     void insert(int val) {
         int n = arr.length;
@@ -114,6 +115,27 @@ public class MaxHeap {
 
         this.arr = newArr;
         return sorted;
+
+    }
+
+
+    void heapify() {
+        for (int i = arr.length - 1; i > 0; i--) {
+            heapify(arr, i);
+        }
+    }
+
+    private void heapify(int[] arr, int inx) {
+        if (inx >= arr.length) {
+            return;
+        }
+        int p = (int) (Math.floor(inx / 2));
+        if (arr[inx] > arr[p]) {
+            swap(arr, p, inx);
+            heapify(arr, p);
+        }
+
+        return;
 
     }
 

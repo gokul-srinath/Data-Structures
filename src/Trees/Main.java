@@ -59,28 +59,36 @@ public class Main {
 //        st.update(7,2);
 //        st.display();
 
-        MaxHeap mh = new MaxHeap();
-        mh.insert(5);
-        mh.insert(4);
-        mh.insert(2);
-        mh.insert(5);
-        mh.insert(7);
-
+//        MaxHeap mh = new MaxHeap();
+//        mh.insert(5);
+//        mh.insert(4);
+//        mh.insert(2);
+//        mh.insert(5);
+//        mh.insert(7);
+//
+//        mh.displayTree();
+//        mh.insert(16);
+//        mh.displayTree();
+//
+//        int[] sorted = mh.heapSort();
+//        System.out.println(Arrays.toString(sorted));
+//
+//        System.out.println("Deleted ->" + mh.delete());
+//        System.out.println("----------------------------------");
+//        mh.displayTree();
+//        System.out.println("Deleted ->" + mh.delete());
+//        System.out.println("----------------------------------");
+//        mh.displayTree();
+//
+//        sorted = mh.heapSort();
+//        System.out.println(Arrays.toString(sorted));
+        int[] newArr = {1, 6, 4, 2, 7, 3, 9, 10};
+        MaxHeap mh = new MaxHeap(newArr);
         mh.displayTree();
-        mh.insert(16);
+
+        mh.heapify();
         mh.displayTree();
 
-        int[] sorted = mh.heapSort();
-        System.out.println(Arrays.toString(sorted));
 
-        System.out.println("Deleted ->" + mh.delete());
-        System.out.println("----------------------------------");
-        mh.displayTree();
-        System.out.println("Deleted ->" + mh.delete());
-        System.out.println("----------------------------------");
-        mh.displayTree();
-
-        sorted = mh.heapSort();
-        System.out.println(Arrays.toString(sorted));
     }
 }
